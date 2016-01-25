@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :classrooms
+  resources :courses
+  resources :students
   resources :dogs
   resources :dogs
   resources :dogs

@@ -11,85 +11,106 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114182050) do
+ActiveRecord::Schema.define(version: 20160125173516) do
 
-  create_table "api_keys", force: :cascade do |t|
-    t.string   "access_token", limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "api_keys", force: true do |t|
+    t.string   "access_token"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  create_table "dogs", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "age",        limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "classrooms", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "course_id"
+    t.datetime "entry_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "entities", force: :cascade do |t|
-    t.integer  "modules_category_id", limit: 4
-    t.string   "name",                limit: 255
-    t.string   "slug",                limit: 255
-    t.string   "controller",          limit: 255
+  add_index "classrooms", ["course_id"], name: "index_classrooms_on_course_id", using: :btree
+  add_index "classrooms", ["student_id"], name: "index_classrooms_on_student_id", using: :btree
+
+  create_table "courses", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "entities", force: true do |t|
+    t.integer  "modules_category_id"
+    t.string   "name"
+    t.string   "slug"
+    t.string   "controller"
     t.boolean  "is_dev"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
-  create_table "modules_categories", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "icon",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "modules_categories", force: true do |t|
+    t.string   "name"
+    t.string   "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "permissions", force: :cascade do |t|
-    t.integer  "entity_id",   limit: 4
-    t.string   "action_name", limit: 255
-    t.string   "action",      limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "permissions", force: true do |t|
+    t.integer  "entity_id"
+    t.string   "action_name"
+    t.string   "action"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "permissions", ["entity_id"], name: "index_permissions_on_entity_id", using: :btree
 
-  create_table "permissions_roles", force: :cascade do |t|
-    t.integer  "role_id",       limit: 4
-    t.integer  "permission_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "permissions_roles", force: true do |t|
+    t.integer  "role_id"
+    t.integer  "permission_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.integer  "role_id",                limit: 4
-    t.string   "name",                   limit: 255
-    t.boolean  "is_dev",                             default: false
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.string   "register_number"
+    t.integer  "status"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "users", force: true do |t|
+    t.integer  "role_id"
+    t.string   "name"
+    t.boolean  "is_dev",                 default: false
     t.datetime "token_expiration_time"
-    t.string   "access_token",           limit: 255
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.string   "email",                  limit: 255, default: "",    null: false
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "access_token"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
-  add_foreign_key "permissions", "entities"
-  add_foreign_key "users", "roles"
 end

@@ -201,23 +201,34 @@ pt-BR:
   time:
     am: ''
     formats:
-      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      default: "%a, %d/%b/%Y, %H:%M"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
+      very_short: "%a, %d de %B"
     pm: ''
   activerecord:
     models:
       user: Usuário
+      championship: 'Campeonato'
+      team: 'Time'
+      match: 'Jogo'
       entity: 'Módulo'
       permission: 'Permissão'
       role: 'Perfil'
       modules_category: 'Categoria de Módulos'
+      bet: 'Aposta'
     attributes:
       user:
+        role_id: "Perfil"
         name: "Nome"
         email: "E-mail"
         password: "Senha"
-        password_confirmation: "Senha Confirmação"
+        percentage_of_comission: "Porcentagem de Comissão para 3 ou Mais Jogos"
+        betting_maximum_value: "Limite Máximo de Aposta"
+        awards_maximum_value: "Limite Máximo de Premiação"
+        weekly_limit_bet: "Limite Máximo de Aposta Semanal"
+        comission_for_a_game: "Porcentagem de Comissão para 1 Jogo"
+        comission_for_two_games: "Porcentagem de Comissão para 2 Jogos" 
       role:
         name: "Nome"
       permission: 
@@ -227,6 +238,33 @@ pt-BR:
       modules_category:
         name: "Nome"
         icon: "Ícone"
+      team: 
+        name: "Nome"
+      championship: 
+        name: "Nome"
+      match:
+        championship_id: "Campeonato"
+        date: "Data e Hora"
+        home_team: "Time Mandante/Casa"
+        away_team: "Time Visitante/Fora"
+        home_score: "Placar Mandante/Casa"
+        away_score: "Placar Visitante/Fora"
+        quotation_home: "Cotação Casa"
+        quotation_tied: "Cotação Empate"
+        quotation_away: "Cotação Fora"
+        quotation_goal_means: "Cotação Gol e Meio"
+        quotation_double_underdog: "Cotação Duplo Azarão"
+        quotation_both: "Cotação Ambos"
+      bet:
+        bettor_name: "Nome do Apostador"
+        bet_amount: "Valor da Aposta"
+        number_games: "Número de Jogos"
+        amount_wagered: "Cotação Final"
+        return_value: "Valor de Retorno"
+        match_ids: "Jogos"
+        bet_hash: "Código da Aposta"
+        paid_out: "Pagamento da Aposta"
+        award_was_paid: "Pagamento de Premiação"
   devise:
     confirmations:
       confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
@@ -284,3 +322,14 @@ pt-BR:
         not_saved:
           one: "Não foi possível salvar %{resource}: 1 erro"
           other: "Não foi possível salvar %{resource}: %{count} erros."
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Pr&oacute;ximo &#8594;"
+    page_gap: "&hellip;"
+    page_entries_info:
+      single_page_html:
+        zero:  "Nenhum registro encontrado"
+        one:   "Apenas 1 registro encontrado"
+        other: "Mostrando todos os %{count} registros encontrados"
+      multi_page: "Mostrando registros %{from} até %{to} de %{count} no total"
+      multi_page_html: "Mostrando registros %{from} até %{to} de %{count} no total"
