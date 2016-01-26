@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160125173516) do
   create_table "classrooms", force: true do |t|
     t.integer  "student_id"
     t.integer  "course_id"
-    t.datetime "entry_at"
+    t.date     "entry_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
