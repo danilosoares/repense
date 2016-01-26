@@ -209,14 +209,13 @@ pt-BR:
   activerecord:
     models:
       user: Usuário
-      championship: 'Campeonato'
-      team: 'Time'
-      match: 'Jogo'
       entity: 'Módulo'
       permission: 'Permissão'
       role: 'Perfil'
       modules_category: 'Categoria de Módulos'
-      bet: 'Aposta'
+      classroom: 'Matrícula'
+      student: 'Estudante'
+      course: 'curso'
     attributes:
       user:
         role_id: "Perfil"
@@ -238,33 +237,16 @@ pt-BR:
       modules_category:
         name: "Nome"
         icon: "Ícone"
-      team: 
+      classroom: 
+        student_id: "Estudante"
+        course_id: "Curso"
+        entry_at: "Data da Matrícula"
+      student: 
         name: "Nome"
-      championship: 
+        register_number: "Número de Registro"
+      course:
         name: "Nome"
-      match:
-        championship_id: "Campeonato"
-        date: "Data e Hora"
-        home_team: "Time Mandante/Casa"
-        away_team: "Time Visitante/Fora"
-        home_score: "Placar Mandante/Casa"
-        away_score: "Placar Visitante/Fora"
-        quotation_home: "Cotação Casa"
-        quotation_tied: "Cotação Empate"
-        quotation_away: "Cotação Fora"
-        quotation_goal_means: "Cotação Gol e Meio"
-        quotation_double_underdog: "Cotação Duplo Azarão"
-        quotation_both: "Cotação Ambos"
-      bet:
-        bettor_name: "Nome do Apostador"
-        bet_amount: "Valor da Aposta"
-        number_games: "Número de Jogos"
-        amount_wagered: "Cotação Final"
-        return_value: "Valor de Retorno"
-        match_ids: "Jogos"
-        bet_hash: "Código da Aposta"
-        paid_out: "Pagamento da Aposta"
-        award_was_paid: "Pagamento de Premiação"
+        description: "Descrição"
   devise:
     confirmations:
       confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
