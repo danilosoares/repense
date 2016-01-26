@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
           <%= f.label 'Data da Matrícula *' %><br>
-            <div class="input-group date form_datetime-component">
+            <div class="input-group date default-date-picker">
                 <% if not @classroom.entry_at.blank? %>
                   <input name="classroom[entry_at]"type="text" class="form-control" readonly="" size="16" value="<%=I18n.l(@classroom.entry_at)%>">
                 <% else %>

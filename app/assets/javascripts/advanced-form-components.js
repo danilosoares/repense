@@ -6,7 +6,7 @@
     $(function(){
         window.prettyPrint && prettyPrint();
         $('.default-date-picker').datepicker({
-            format: 'mm-dd-yyyy',
+            format: 'dd-mm-yyyy',
             autoclose: true
         });
         $('.dpYears').datepicker({
@@ -83,7 +83,8 @@ $(".form_datetime").datetimepicker({
 
 
 $(".form_datetime-component").datetimepicker({
-    format: "dd MM yyyy - hh:ii",
+    format: "dd/mm/yyyy",
+    language: "pt-BR",
     autoclose: true,
     todayBtn: true,
     pickerPosition: "bottom-left"
