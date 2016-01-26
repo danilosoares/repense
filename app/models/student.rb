@@ -1,8 +1,5 @@
 class Student < ActiveRecord::Base
-  has_many :bet_matches, dependent: :restrict_with_exception
-  has_many :bets, :through => :bet_matches, dependent: :restrict_with_exception
-
-  has_many :classrooms
+  has_many :classrooms, dependent: :restrict_with_exception
   has_many :courses, :through => :classrooms
 
   validates :name, presence: true

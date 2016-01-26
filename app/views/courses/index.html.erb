@@ -5,6 +5,11 @@
     </a>
     <div class="panel"></div>
     <section class="panel">
+     <% if alert %>
+        <div class="alert alert-block alert-danger fade in">
+            <%= alert %>
+        </div>
+      <% end %>
       <header class="panel-heading">
           Cursos
       </header>
